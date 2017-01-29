@@ -1,0 +1,30 @@
+{
+  "name": "ranker",
+  "version": "0.0.1",
+  "description": "This is a project that ranks players using ELO system. This is intended for me to learn node.js.",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husainaloos/ranker.git"
+  },
+  "author": "Husain Alshehhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/husainaloos/ranker/issues"
+  },
+  "homepage": "https://github.com/husainaloos/ranker#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.8",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jshint": "^2.9.4",
+    "mocha": "^3.2.0"
+  }
+}
