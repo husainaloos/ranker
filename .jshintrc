@@ -1,6 +1,0 @@
-{
-    "node": true,
-    "curly": true,
-    "eqeqeq": true,
-    "undef": true
-}

@@ -10,7 +10,10 @@ app.use(bodyParser.json());
 app.use(morgan('combined'));
 app.use('/api', apiRouter);
 
-mongoose.connect(config.db.url);
+mongoose.connect(config.db.url, function(err) {
+    console.log('Error connecting to database.');
+    console.log(err);
+});
 
 app.listen(config.express.port, function() {
     console.log('app started at port ' + config.express.port);
