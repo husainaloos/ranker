@@ -1,6 +1,7 @@
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var nodemon = require('gulp-nodemon');
+const gulp = require('gulp');
+const eslint = require('gulp-eslint');
+const nodemon = require('gulp-nodemon');
+const chalk = require('chalk');
 
 gulp.task('lint', function() {
     return gulp.src(['*.js', './routes/*.js', './models/*.js', './config/*.js'])
@@ -10,19 +11,19 @@ gulp.task('lint', function() {
 });
 
 gulp.task('nodemon', function() {
-    var stream = nodemon({
+    const stream = nodemon({
         script: 'start.js',
         ext: 'html js',
         verbose: true,
-        tasks: ['lint']
+        tasks: ['lint'],
     });
 
     stream
         .on('restart', function() {
-            console.log('restarted!')
+            chalk.yellow('Restarting...');
         })
         .on('crash', function() {
-            console.error('Application has crashed!\n');
+            chalk.yellow('Crashed. Restarting in few seconds...');
             stream.emit('restart', 10);
         });
 });

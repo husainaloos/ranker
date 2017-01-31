@@ -1,21 +1,21 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var playerSchema = new Schema({
+const playerSchema = new Schema({
     name: String,
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     eloRanking: Number,
-    createdAt: Date
+    createdAt: Date,
 });
 
-var Player = mongoose.model('Player', playerSchema);
+const Player = mongoose.model('Player', playerSchema);
 
 module.exports = Player;

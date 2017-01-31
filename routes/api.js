@@ -1,6 +1,6 @@
-var express = require('express');
-var playersRouter = require('./players');
-var router = express.Router();
+const expressRouter = require('express').Router;
+const playersRouter = require('./players');
+const router = expressRouter();
 
 router.use('/players', playersRouter);
 
