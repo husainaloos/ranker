@@ -12,10 +12,16 @@ const playerSchema = new Schema({
         type: String,
         required: true,
     },
-    eloRanking: Number,
-    createdAt: Date,
+    eloRanking: {
+        type: Number,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+    },
 });
 
-const Player = mongoose.model('Player', playerSchema);
+const PlayerModel = mongoose.model('Player', playerSchema);
 
-module.exports = Player;
+module.exports = PlayerModel;

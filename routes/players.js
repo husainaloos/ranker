@@ -1,9 +1,10 @@
 const expressRouter = require('express').Router;
 const router = expressRouter();
-const Player = require('../models/player');
+const config = require('../config/config');
+const PlayerModel = require('../models/player');
 
 router.get('/', function(req, res) {
-    Player.find({}, function(err, result) {
+    PlayerModel.find({}, function(err, result) {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -13,7 +14,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:username', function(req, res) {
-    Player.findOne({
+    PlayerModel.findOne({
         username: req.params.username,
     }, function(err, result) {
         if (err) {
@@ -27,7 +28,9 @@ router.get('/:username', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    const player = new Player(req.body);
+    const player = new PlayerModel(req.body);
+    player.createdAt = Date.now();
+    player.eloRanking = config.ranking.startRanking;
     player.validate(function(err) {
         if (err) {
             res.status(400).send(err);
@@ -44,7 +47,7 @@ router.post('/', function(req, res) {
 });
 
 router.delete('/:username', function(req, res) {
-    Player.findOneAndRemove({
+    PlayerModel.findOneAndRemove({
         username: req.params.username,
     }, function(err, result) {
         if (err) {
@@ -58,13 +61,13 @@ router.delete('/:username', function(req, res) {
 });
 
 router.put('/:username', function(req, res) {
-    const player = new Player(req.body);
+    const player = new PlayerModel(req.body);
     player.username = req.params.username;
     player.validate(function(err) {
         if (err) {
             res.status(400).send(err);
         } else {
-            Player.findOneAndUpdate({
+            PlayerModel.findOneAndUpdate({
                 username: req.params.username,
             }, player, function(err, result) {
                 if (err) {
