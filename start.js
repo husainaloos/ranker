@@ -24,7 +24,7 @@ app.listen(config.express.port, function(err) {
     if (err) {
         chalk.red(err);
     } else {
-        chalk.green('Starting application at port '
-        + config.express.port + '.');
+        chalk.green('Starting application at port ' +
+            config.express.port + '.');
     }
 });

@@ -12,4 +12,16 @@ router.get('/', function(req, res) {
     });
 });
 
+router.get('/:id', function(req, res) {
+    GameModel.findById(req.params.id, function(err, result) {
+        if (err) {
+            res.status(500).send(err);
+        } else if (!result) {
+            res.sendStatus(404);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 module.exports = router;
