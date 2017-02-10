@@ -24,4 +24,18 @@ router.get('/:id', function(req, res) {
     });
 });
 
+router.delete('/:id', function(req, res) {
+    GameModel.findOneAndRemove({
+        _id: req.params.id,
+    }, function(err, result) {
+        if (err) {
+            res.status(500).send(err);
+        } else if (!result) {
+            res.sendStatus(404);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 module.exports = router;
